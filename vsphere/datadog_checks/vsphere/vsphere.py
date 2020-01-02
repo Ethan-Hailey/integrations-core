@@ -465,7 +465,7 @@ class VSphereCheck(AgentCheck):
         except Exception:
             self.log.error("The vCenter API is not responding. The check will not run.")
             self.service_check(SERVICE_CHECK_NAME, AgentCheck.CRITICAL, tags=self.base_tags, hostname=None)
-            return
+            raise
         else:
             self.service_check(SERVICE_CHECK_NAME, AgentCheck.OK, tags=self.base_tags, hostname=None)
 
