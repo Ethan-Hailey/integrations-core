@@ -2,8 +2,7 @@ import os
 
 import pytest
 from mock import MagicMock, Mock, patch
-
-HERE = os.path.abspath(os.path.dirname(__file__))
+from tests.mocked_api import MockedAPI
 
 
 @pytest.fixture()
@@ -51,4 +50,10 @@ def mock_threadpool():
         pool.return_value.submit = lambda f, args: MagicMock(
             done=MagicMock(return_value=True), result=MagicMock(return_value=f(args))
         )
+        yield
+
+
+@pytest.fixture
+def mock_api():
+    with patch('datadog_checks.vsphere.vsphere.VSphereAPI', MockedAPI):
         yield
