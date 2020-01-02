@@ -95,8 +95,6 @@ instances:
       - <KEY_2>:<VALUE_2>
 ```
 
-
-
 ##### sysOID mapped device profiles
 
 Profiles allow the SNMP check to reuse metric definitions across several device types or instances. Profiles define metrics the same way as instances, either inline in the configuration file or in separate files. Each instance can only match a single profile. For example, you can define a profile in the `init_config` section:
